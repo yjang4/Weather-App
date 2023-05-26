@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <img src="#"/>
+    <button> get new image </button>
+    <script>
+        const img = document.querySelector('img');
+        
+        function btnClick() {
+            fetch('https://api.giphy.com/v1/gifs/translate?api_key=g72i3yeiL9kBl8o5DmSq0Dr9I3MSa2Vw&s=cats', {mode: 'cors'})
+            .then(function(response) {
+            return response.json()
+            })
+            .then(function(response) {
+                img.src = response.data.images.original.url;
+            });
+        }
+        const btn = document.querySelector('button');
+        btn.addEventListener("click", btnClick);
+          
+    </script>
+</body>
+</html>
