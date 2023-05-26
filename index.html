@@ -10,19 +10,25 @@
 </head>
 <body>
     <img src="#"/>
+
+    <form method="post">
+    <input type="text"/>
     <button> get new image </button>
+    </form>
     <script>
         const img = document.querySelector('img');
         
         function btnClick() {
-            fetch('https://api.giphy.com/v1/gifs/translate?api_key=g72i3yeiL9kBl8o5DmSq0Dr9I3MSa2Vw&s=cats', {mode: 'cors'})
+            fetch('https://api.giphy.com/v1/gifs/trending?api_key=g72i3yeiL9kBl8o5DmSq0Dr9I3MSa2Vw&s', {mode: 'cors'})
             .then(function(response) {
             return response.json()
             })
             .then(function(response) {
-                img.src = response.data.images.original.url;
+                img.src = response.data[0].url;
             });
         }
+        btnClick();
+
         const btn = document.querySelector('button');
         btn.addEventListener("click", btnClick);
           
