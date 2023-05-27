@@ -16,15 +16,12 @@
     <script>
         const img = document.querySelector('img');
         const userInput = document.querySelector('input');
-        function btnClick() {
-            console.log(userInput.value);
-            fetch('https://api.giphy.com/v1/gifs/translate?api_key=g72i3yeiL9kBl8o5DmSq0Dr9I3MSa2Vw&s=' + userInput.value.toString(), {mode: 'cors'})
-            .then(function(response) {
-            return response.json()
-            })
-            .then(function(response) {
-                img.src = response.data.images.original.url;;
-            }); 
+        async function btnClick() {
+            const response = await fetch('https://api.giphy.com/v1/gifs/translate?api_key=g72i3yeiL9kBl8o5DmSq0Dr9I3MSa2Vw&s=' + userInput.value.toString(), {mode: 'cors'})
+            const catData = await response.json();
+            img.src = catData.data.images.original.url;
+            
+            
         }
         const btn = document.querySelector('button');
         btn.addEventListener("click", btnClick);
